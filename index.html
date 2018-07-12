@@ -1,0 +1,159 @@
+<!-- ENTER CONTENT HERE -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="main.js"></script> -->
+</head>
+  <body>
+    <div class="slide-container">
+        <a href="#" class="next">></a>
+        <a href="#" class="prev"><</a>
+        <ul class="slide-ul">
+            <li id="casino" class="slide-li">casino</li>
+            <li id="sport" class="slide-li" style="background: #aaa;">sport</li>
+        </ul>  
+        <div class="sport" style="background-color:green; width: 100%; height: 30px"></div>
+        <div class="casino" style="background-color:red; width:100%; height: 30px"></div>
+        <div class="sport" style="background-color:blue; width: 100%; height: 30px"></div>
+    </div>
+<script type="text/javascript">
+jQuery(document).ready(function ($) {
+    $('.slide-li').css({ width: window.innerWidth});
+      setInterval(function () {
+          moveRight();
+      }, 10000);
+     
+    var slideCount = $('.slide-li').length;
+    var slideWidth = $('.slide-li').width();
+    var slideHeight = $('.slide-li').height();
+    var sliderUlWidth = slideCount * slideWidth;
+    
+    
+    $('.slide-container').css({ width: slideWidth, height: slideHeight });
+    
+    $('.slide-ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+    
+      $('.slide-li:last-child').prependTo('.slide-ul');
+  
+      function moveLeft() {
+          $('.slide-ul').animate({
+              left: + slideWidth
+          }, 500, function () {
+              $('.slide-li:last-child').prependTo('.slide-ul');
+              $('.slide-ul').css('left', '');
+          });
+      };
+  
+      function moveRight() {
+          $('.slide-ul').animate({
+              left: - slideWidth
+          }, 500, function () {
+              $('.slide-li:first-child').appendTo('.slide-ul');
+              $('.slide-ul').css('left', '');
+          });
+      };
+
+      function moveTO(id) {
+          debugger;
+         $('#', id.id).animate({
+            left: - slideWidth
+        }, 200, function () {
+            $('#', id).appendTo('.slide-ul');
+            $('.slide-ul').css('left', '');
+        });
+      }
+  
+      $('.prev').click(function () {
+          moveLeft();
+      });
+  
+      $('.next').click(function () {
+          moveRight();
+      });
+
+      $('.sport').click(function () {
+          moveTO(sport);
+      });
+      $('.casino').click(function () {
+          moveTO(casino);
+      });
+  
+  });   
+</script>
+<style>
+    a{
+        display: block;
+    }
+body{
+    margin: 0;
+}
+.slide-container {
+  position: relative;
+  overflow: hidden;
+  margin: 20px auto 0 auto;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.slide-ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 200px;
+  list-style: none;
+  overflow: hidden
+}
+
+ .slide-li {
+  position: relative;
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  /* width: 375px; */
+  height: 300px;
+  background: #ccc;
+  text-align: center;
+  line-height: 300px;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 40%;
+  z-index: 999;
+  display: block;
+  padding: 4% 3%;
+  width: auto;
+  height: auto;
+  background: #2a2a2a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.prev:hover, 
+.next:hover {
+  opacity: 1;
+  -webkit-transition: all 0.2s ease;
+}
+
+.prev {
+  border-radius: 0 2px 2px 0;
+}
+
+.next {
+  right: 0;
+  border-radius: 2px 0 0 2px;
+}
+</style>
+</body>
+</html>
