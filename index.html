@@ -14,12 +14,24 @@
         <a href="#" class="next">></a>
         <a href="#" class="prev"><</a>
         <ul class="slide-ul">
-            <li id="casino" class="slide-li">casino</li>
-            <li id="sport" class="slide-li" style="background: #aaa;">sport</li>
+            <li id="sport" class="slide-li"><img class="slide-image" src=" https://content.gmgamingsystems.com/medialibraries/content.gmgamingsystems.com/Betway-PT/sports-mobile.jpg" alt=""></li>
+            <li id="casino" class="slide-li"><img class="slide-image" src=" https://content.gmgamingsystems.com/medialibraries/content.gmgamingsystems.com/Betway-PT/casino-mobile.jpg" alt=""></li>
         </ul>  
-        <div class="sport" style="background-color:green; width: 100%; height: 30px"></div>
-        <div class="casino" style="background-color:red; width:100%; height: 30px"></div>
-        <div class="sport" style="background-color:blue; width: 100%; height: 30px"></div>
+        <div class="sport" style="border-top: 4px solid #439539; width: 100%;">
+            <span class="slide-header" style="color: #439539;">sports</span>
+            <span class="slide-text">Excellent odds on 65,000+ events</span>
+            <a class="section-button sports-button" style="background-color: #439539;" href="/sports/">Bet Now</a>
+        </div>
+        <div class="casino" style="border-top: 4px solid #0054a4; width:100%;">
+                <span class="slide-header" style="color: #0054a4;">casino</span>
+                <span class="slide-text">World clas gaming experience</span>
+                <a class="section-button sports-button" style="background-color: #0054a4;" href="/sports/">Play Now</a>
+        </div>
+        <div class="sport" style="border-top: 4px solid #acc540; width:100%;">
+                <span class="slide-header" style="color: #acc540;">live sports</span>
+                <span class="slide-text">Real casino with real dealers</span>
+                <a class="section-button sports-button" style="background-color: #acc540;" href="/sports/">Bet Now</a>
+        </div>
     </div>
 <script type="text/javascript">
 jQuery(document).ready(function ($) {
@@ -58,15 +70,19 @@ jQuery(document).ready(function ($) {
           });
       };
 
-      function moveTO(id) {
-          debugger;
-         $('#', id.id).animate({
-            left: - slideWidth
-        }, 200, function () {
-            $('#', id).appendTo('.slide-ul');
+      function moveToS() {
+         $('#sport', function() {
+            $('#sport').appendTo('.slide-ul');
             $('.slide-ul').css('left', '');
         });
-      }
+      };
+
+      function moveToC() {
+         $('#casino', function () {
+            $('#casino').appendTo('.slide-ul');
+            $('.slide-ul').css('left', '');
+        });
+      };
   
       $('.prev').click(function () {
           moveLeft();
@@ -77,10 +93,10 @@ jQuery(document).ready(function ($) {
       });
 
       $('.sport').click(function () {
-          moveTO(sport);
+          moveToS();
       });
       $('.casino').click(function () {
-          moveTO(casino);
+          moveToC();
       });
   
   });   
@@ -91,6 +107,17 @@ jQuery(document).ready(function ($) {
     }
 body{
     margin: 0;
+    background: #000;
+}
+.sport{
+    height: 100px
+}
+.casino{
+    height: 100px
+}
+.slide-image{
+    width: 100%;
+    height: 200px
 }
 .slide-container {
   position: relative;
@@ -116,28 +143,26 @@ body{
   float: left;
   margin: 0;
   padding: 0;
-  /* width: 375px; */
-  height: 300px;
-  background: #ccc;
+  height: 500px;
+  background: #000;
   text-align: center;
   line-height: 300px;
 }
 
 .prev, .next {
-  position: absolute;
-  top: 40%;
-  z-index: 999;
-  display: block;
-  padding: 4% 3%;
-  width: auto;
-  height: auto;
-  background: #2a2a2a;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 18px;
-  opacity: 0.8;
-  cursor: pointer;
+    position: absolute;
+    top: 11%;
+    z-index: 999;
+    display: block;
+    padding: 4% 3%;
+    width: auto;
+    height: auto;
+    color: #fff;
+    text-decoration: none;
+    font-size: 38px;
+    opacity: 0.8;
+    cursor: pointer;
+    font-weight: 900;
 }
 
 .prev:hover, 
@@ -153,6 +178,37 @@ body{
 .next {
   right: 0;
   border-radius: 2px 0 0 2px;
+}
+
+.slide-header{
+    font-size: 20px;
+    margin: 0;
+    display: block;
+    font-weight: 800;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.slide-text {
+    color: #fff;
+    font-size: 14px;
+    display: block;
+    width: 40%;
+    margin-left: 20px;
+}
+.sports-button {
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    position: relative;
+    pointer-events: none;
+    top: -44px;
+    padding: 8px 8px;
+    width: 30%;
+    float: right;
+    text-align: center;
+    margin-right: 20px;
 }
 </style>
 </body>
